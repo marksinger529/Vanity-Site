@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Widget Test - Should Only Show 2 Widgets</title>
+    <link rel="stylesheet" href="styles.css?v=fresh-no-widgets-999" />
+</head>
+<body>
+    <h1>Widget Removal Test</h1>
+    <p>If widgets were properly removed, you should only see:</p>
+    <ul>
+        <li>Status indicator (green dot, top-left)</li>
+        <li>Last updated widget (bottom-left)</li>
+        <li>Progress bar (top of page)</li>
+    </ul>
+    
+    <p>You should NOT see:</p>
+    <ul>
+        <li>Large time/weather widget (top-right)</li>
+        <li>Visitor counter (bottom-right)</li>
+        <li>Quick stats (right side)</li>
+        <li>Save profile button (top area)</li>
+    </ul>
+    
+    <div style="height: 2000px; background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);">
+        <p style="padding: 50px;">Scroll down to test sticky navigation...</p>
+    </div>
+    
+    <script src="script.js?v=fresh-no-widgets-999"></script>
+</body>
+</html>
