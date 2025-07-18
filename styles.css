@@ -635,6 +635,36 @@ footer p {
     min-width: 180px !important;
   }
   
+  .weather-timezone {
+    top: 160px !important;
+    right: 10px !important;
+    font-size: 10px !important;
+    padding: 12px !important;
+    min-width: 180px !important;
+  }
+  
+  .quick-stats {
+    top: 240px !important;
+    right: 10px !important;
+    font-size: 10px !important;
+    padding: 12px !important;
+    min-width: 180px !important;
+  }
+  
+  .status-indicator {
+    top: 15px !important;
+    left: 10px !important;
+    font-size: 11px !important;
+    padding: 10px 12px !important;
+  }
+  
+  .save-bookmark {
+    top: 15px !important;
+    right: 200px !important;
+    font-size: 10px !important;
+    padding: 8px 10px !important;
+  }
+  
   .visitor-counter {
     bottom: 15px !important;
     right: 10px !important;
@@ -664,6 +694,32 @@ footer p {
     font-size: 10px !important;
     padding: 10px !important;
     min-width: 160px !important;
+  }
+  
+  .weather-timezone {
+    display: none !important; /* Hide on very small screens */
+  }
+  
+  .quick-stats {
+    top: 140px !important;
+    right: 5px !important;
+    font-size: 9px !important;
+    padding: 10px !important;
+    min-width: 160px !important;
+  }
+  
+  .status-indicator {
+    top: 10px !important;
+    left: 5px !important;
+    font-size: 10px !important;
+    padding: 8px 10px !important;
+  }
+  
+  .save-bookmark {
+    top: 10px !important;
+    right: 170px !important;
+    font-size: 9px !important;
+    padding: 6px 8px !important;
   }
   
   .visitor-counter,

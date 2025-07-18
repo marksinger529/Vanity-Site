@@ -321,3 +321,260 @@ function addKeyboardShortcuts() {
         }
     });
 }
+
+// Status indicator widget
+function addStatusIndicator() {
+    const widget = document.createElement('div');
+    widget.className = 'status-indicator';
+    widget.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 12px 16px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        font-size: 12px;
+        color: var(--text-dark);
+        z-index: 1000;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    `;
+    
+    widget.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></div>
+            <div style="font-weight: 600; color: var(--primary-color);">Available for opportunities</div>
+        </div>
+        <div style="font-size: 10px; opacity: 0.7; margin-top: 2px;">🚀 Open to Director/Principal PM roles</div>
+    `;
+    
+    widget.addEventListener('click', () => {
+        widget.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            widget.style.transform = 'scale(1)';
+        }, 150);
+    });
+    
+    document.body.appendChild(widget);
+}
+
+// Quick stats widget
+function addQuickStatsWidget() {
+    const widget = document.createElement('div');
+    widget.className = 'quick-stats';
+    widget.style.cssText = `
+        position: fixed;
+        top: 280px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        font-size: 11px;
+        color: var(--text-dark);
+        z-index: 1000;
+        border: 1px solid var(--border-color);
+        min-width: 200px;
+    `;
+    
+    widget.innerHTML = `
+        <div style="font-weight: 600; margin-bottom: 10px; color: var(--primary-color); font-size: 12px;">📊 Quick Stats</div>
+        <div style="display: grid; gap: 6px;">
+            <div style="display: flex; justify-content: space-between;">
+                <span>💼 Experience:</span>
+                <strong>15+ years</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <span>🎯 Projects Led:</span>
+                <strong>50+ major</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <span>👥 Team Size:</span>
+                <strong>Up to 75</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <span>💰 Budget Managed:</span>
+                <strong>$50M+</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <span>🏆 Success Rate:</span>
+                <strong>99.9%</strong>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(widget);
+}
+
+// Save/Bookmark widget
+function addSaveBookmarkWidget() {
+    const widget = document.createElement('div');
+    widget.className = 'save-bookmark';
+    widget.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 240px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 10px 12px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        font-size: 11px;
+        color: var(--text-dark);
+        z-index: 1000;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    `;
+    
+    let isSaved = localStorage.getItem('markSingerBookmarked') === 'true';
+    
+    function updateWidget() {
+        widget.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="font-size: 14px;">${isSaved ? '🔖' : '📋'}</span>
+                <span style="font-weight: 500;">${isSaved ? 'Saved!' : 'Save Profile'}</span>
+            </div>
+        `;
+    }
+    
+    updateWidget();
+    
+    widget.addEventListener('click', () => {
+        isSaved = !isSaved;
+        localStorage.setItem('markSingerBookmarked', isSaved.toString());
+        updateWidget();
+        
+        // Visual feedback
+        widget.style.transform = 'scale(0.95)';
+        widget.style.background = isSaved ? 'rgba(16, 185, 129, 0.1)' : 'rgba(255, 255, 255, 0.95)';
+        
+        setTimeout(() => {
+            widget.style.transform = 'scale(1)';
+            if (!isSaved) {
+                widget.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        }, 200);
+        
+        // Show notification
+        showNotification(isSaved ? '✅ Profile saved!' : '❌ Bookmark removed');
+    });
+    
+    document.body.appendChild(widget);
+}
+
+// Enhanced Weather/Timezone widget
+function addWeatherTimezoneWidget() {
+    const widget = document.createElement('div');
+    widget.className = 'weather-timezone';
+    widget.style.cssText = `
+        position: fixed;
+        top: 200px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        font-size: 11px;
+        color: var(--text-dark);
+        z-index: 1000;
+        border: 1px solid var(--border-color);
+        min-width: 200px;
+    `;
+    
+    function updateWeatherWidget() {
+        const now = new Date();
+        const nyTime = new Date().toLocaleTimeString('en-US', { 
+            timeZone: 'America/New_York',
+            hour: '2-digit', 
+            minute: '2-digit'
+        });
+        const sfTime = new Date().toLocaleTimeString('en-US', { 
+            timeZone: 'America/Los_Angeles',
+            hour: '2-digit', 
+            minute: '2-digit'
+        });
+        const londonTime = new Date().toLocaleTimeString('en-US', { 
+            timeZone: 'Europe/London',
+            hour: '2-digit', 
+            minute: '2-digit'
+        });
+        
+        // Simple weather simulation based on time/season
+        const hour = now.getHours();
+        const month = now.getMonth();
+        let weather = '';
+        let temp = '';
+        
+        // Simulate realistic NYC weather
+        if (month >= 11 || month <= 2) { // Winter
+            weather = hour < 18 ? '❄️ Snow' : '🌙 Clear';
+            temp = Math.floor(Math.random() * 20) + 25; // 25-45°F
+        } else if (month >= 3 && month <= 5) { // Spring
+            weather = hour < 17 ? '🌸 Mild' : '🌙 Cool';
+            temp = Math.floor(Math.random() * 25) + 50; // 50-75°F
+        } else if (month >= 6 && month <= 8) { // Summer
+            weather = hour < 19 ? '☀️ Sunny' : '🌙 Warm';
+            temp = Math.floor(Math.random() * 20) + 75; // 75-95°F
+        } else { // Fall
+            weather = hour < 17 ? '🍂 Crisp' : '🌙 Cool';
+            temp = Math.floor(Math.random() * 25) + 55; // 55-80°F
+        }
+        
+        widget.innerHTML = `
+            <div style="font-weight: 600; margin-bottom: 10px; color: var(--primary-color); font-size: 12px;">🌍 Time & Weather</div>
+            <div style="margin-bottom: 8px;">
+                <div style="font-weight: 500;">📍 NYC Area</div>
+                <div style="margin: 4px 0;">${weather} ${temp}°F</div>
+            </div>
+            <div style="display: grid; gap: 3px; font-size: 10px; opacity: 0.8;">
+                <div>🗽 NYC: ${nyTime}</div>
+                <div>🌉 SF: ${sfTime}</div>
+                <div>🏰 London: ${londonTime}</div>
+            </div>
+        `;
+    }
+    
+    updateWeatherWidget();
+    setInterval(updateWeatherWidget, 60000); // Update every minute
+    document.body.appendChild(widget);
+}
+
+// Notification helper
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 50px;
+        right: 20px;
+        background: var(--primary-color);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
+    
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Animate out and remove
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
+}
