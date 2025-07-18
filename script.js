@@ -132,31 +132,6 @@ function addSmallWeatherWidget() {
         min-width: 120px;
     `;
     
-    let userLocation = 'Your Location';
-    let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    
-    // Try to get user's location
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            async (position) => {
-                try {
-                    // Use a free geocoding service to get city name
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
-                    const data = await response.json();
-                    userLocation = data.city || data.locality || 'Your Location';
-                    updateWeather();
-                } catch (error) {
-                    console.log('Could not get location name, using default');
-                }
-            },
-            (error) => {
-                console.log('Geolocation not available, using default location');
-            }
-        );
-    }
-    
     function updateWeather() {
         const now = new Date();
         const hour = now.getHours();
@@ -182,15 +157,11 @@ function addSmallWeatherWidget() {
         
         const time = now.toLocaleTimeString('en-US', { 
             hour: '2-digit', 
-            minute: '2-digit',
-            timeZone: userTimezone
+            minute: '2-digit'
         });
         
-        // Shorten long location names for display
-        const displayLocation = userLocation.length > 12 ? userLocation.substring(0, 12) + '...' : userLocation;
-        
         widget.innerHTML = `
-            <div style="font-weight: 500; margin-bottom: 4px;">📍 ${displayLocation}</div>
+            <div style="font-weight: 500; margin-bottom: 4px;">🌍 NYC</div>
             <div style="font-size: 10px; opacity: 0.8;">${weather} ${temp}°F</div>
             <div style="font-size: 10px; opacity: 0.7;">🕐 ${time}</div>
         `;
@@ -314,18 +285,7 @@ function addStatusIndicator() {
         
         // Open email to Mark Singer
         const subject = encodeURIComponent('Program Manager Opportunity - Interest in Your Background');
-        const body = encodeURIComponent(`Hi Mark,
-
-I came across your profile and am interested in discussing a potential Program Manager opportunity.
-
-I'd like to explore:
-☐ Director level Program Manager role
-☐ Principal Program Manager role  
-☐ Staff Program Manager role
-☐ Senior Program Manager role
-
-Best regards,
-[Your Name]`);
+        const body = encodeURIComponent('Hi Mark, I came across your profile and am interested in discussing a potential Program Manager opportunity.');
         
         window.open(`mailto:markharrissinger@gmail.com?subject=${subject}&body=${body}`, '_blank');
     });
