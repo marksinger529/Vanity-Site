@@ -75,6 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add other subtle widgets
     addVisitorCounter();
     addLastUpdatedWidget();
+    addStatusIndicator();
+    addQuickStatsWidget();
+    addSaveBookmarkWidget();
+    addWeatherTimezoneWidget();
 
     // Enhanced Konami code (keep this fun feature)
     addKonamiCode();
