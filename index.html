@@ -90,23 +90,17 @@
   </script>
   
   <link rel="icon" href="favicon.jpg" type="image/jpeg">
-  <link rel="stylesheet" href="styles.css?v=enhanced-v8" />
+  <link rel="stylesheet" href="styles.css?v=fixed-v9" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Loading Animation -->
-  <div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; z-index: 9999;">
-    <div style="text-align: center; color: white;">
-      <div style="width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
-      <p style="font-family: Inter, sans-serif; font-size: 18px; margin: 0;">Loading Mark's Profile...</p>
-    </div>
-  </div>
+
   
   <!-- Contact Form Modal -->
-  <div id="contact-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
-    <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 500px; width: 90%; max-height: 90%; overflow-y: auto;">
+  <div id="contact-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000;">
+    <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 500px; width: 90%; max-height: 90%; overflow-y: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
         <h2 style="margin: 0; color: var(--text-dark);">Contact Mark</h2>
         <button onclick="closeContactForm()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">&times;</button>
@@ -115,17 +109,17 @@
       <form id="contact-form" onsubmit="submitContactForm(event)">
         <div style="margin-bottom: 1rem;">
           <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Your Name *</label>
-          <input type="text" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px;">
+          <input type="text" name="name" required style="width: calc(100% - 1.5rem); padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
         </div>
         
         <div style="margin-bottom: 1rem;">
           <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Your Email *</label>
-          <input type="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px;">
+          <input type="email" name="email" required style="width: calc(100% - 1.5rem); padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
         </div>
         
         <div style="margin-bottom: 1rem;">
           <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Position Level *</label>
-          <select name="position" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px;">
+          <select name="position" required style="width: calc(100% - 1.5rem); padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
             <option value="">Select position level...</option>
             <option value="Director">Director Level PM</option>
             <option value="Principal">Principal PM</option>
@@ -137,12 +131,12 @@
         
         <div style="margin-bottom: 1rem;">
           <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Company</label>
-          <input type="text" name="company" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px;">
+          <input type="text" name="company" style="width: calc(100% - 1.5rem); padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
         </div>
         
         <div style="margin-bottom: 1.5rem;">
           <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Message *</label>
-          <textarea name="message" required rows="4" placeholder="Tell me about the opportunity..." style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; resize: vertical;"></textarea>
+          <textarea name="message" required rows="4" placeholder="Tell me about the opportunity..." style="width: calc(100% - 1.5rem); padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
         </div>
         
         <div style="display: flex; gap: 1rem; justify-content: flex-end;">
@@ -529,7 +523,7 @@
     <p>&copy; 2025 Mark H. Singer</p>
   </footer>
 
-  <script src="script.js?v=enhanced-v8"></script>
+  <script src="script.js?v=fixed-v9"></script>
   <script src="enhanced-features.js"></script>
 </body>
 </html>

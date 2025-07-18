@@ -100,40 +100,7 @@ function addBackToTopButton() {
     document.body.appendChild(button);
 }
 
-// Swipe Gestures for Mobile Navigation
-function addSwipeGestures() {
-    let startX, startY, currentSection = 0;
-    const sections = document.querySelectorAll('section');
-    
-    document.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-    });
-    
-    document.addEventListener('touchend', (e) => {
-        if (!startX || !startY) return;
-        
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        const diffX = startX - endX;
-        const diffY = startY - endY;
-        
-        // Only trigger if horizontal swipe is longer than vertical
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-            if (diffX > 0 && currentSection < sections.length - 1) {
-                // Swipe left - next section
-                currentSection++;
-                sections[currentSection].scrollIntoView({ behavior: 'smooth' });
-            } else if (diffX < 0 && currentSection > 0) {
-                // Swipe right - previous section
-                currentSection--;
-                sections[currentSection].scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        
-        startX = startY = null;
-    });
-}
+
 
 // Touch Optimized Contact Buttons
 function addTouchOptimizedButtons() {

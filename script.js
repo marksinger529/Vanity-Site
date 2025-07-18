@@ -66,11 +66,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Loading animation
-    setTimeout(() => {
-        document.getElementById('loading-screen').style.display = 'none';
-        if (typeof trackGeography === 'function') trackGeography(); // Track visitor location for analytics
-    }, 1500);
+    // Track geography for analytics
+    if (typeof trackGeography === 'function') trackGeography();
 
     // Simple progress bar
     createProgressBar();
@@ -85,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
     addBackToTopButton();
 
     // Add enhanced features
-    addSwipeGestures();
     addTouchOptimizedButtons();
 
     // Enhanced Konami code (keep this fun feature)
