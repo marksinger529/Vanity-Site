@@ -77,16 +77,7 @@
       });
     }
     
-    function trackGeography() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          gtag('event', 'visitor_location', {
-            'latitude': position.coords.latitude,
-            'longitude': position.coords.longitude
-          });
-        });
-      }
-    }
+         // Geographic tracking removed to avoid location permission requests
   </script>
   
   <link rel="icon" href="favicon.jpg" type="image/jpeg">

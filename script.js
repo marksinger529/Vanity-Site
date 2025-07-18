@@ -66,8 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Track geography for analytics
-    if (typeof trackGeography === 'function') trackGeography();
+    // Geographic tracking removed to avoid location permission requests
 
     // Simple progress bar
     createProgressBar();
