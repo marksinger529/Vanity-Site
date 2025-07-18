@@ -342,3 +342,78 @@ function showNotification(message) {
         setTimeout(() => notification.remove(), 300);
     }, 2000);
 }
+
+// Back to Top Button
+function addBackToTopButton() {
+    const button = document.createElement('div');
+    button.className = 'back-to-top';
+    button.innerHTML = '↑';
+    button.style.cssText = `
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    `;
+    
+    button.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (typeof trackContactClick === 'function') {
+            trackContactClick('back_to_top');
+        }
+    });
+    
+    // Show/hide based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            button.style.opacity = '1';
+            button.style.transform = 'scale(1)';
+        } else {
+            button.style.opacity = '0';
+            button.style.transform = 'scale(0.8)';
+        }
+    });
+    
+    document.body.appendChild(button);
+}
+
+// Touch Optimized Contact Buttons
+function addTouchOptimizedButtons() {
+    // Add touch feedback to all buttons and links
+    const touchElements = document.querySelectorAll('a, button, .widget, .skill');
+    
+    touchElements.forEach(element => {
+        element.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+            this.style.transition = 'transform 0.1s ease';
+        });
+        
+        element.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 100);
+        });
+    });
+    
+    // Add haptic feedback if available
+    if ('vibrate' in navigator) {
+        document.querySelectorAll('.status-indicator, .back-to-top').forEach(element => {
+            element.addEventListener('click', () => {
+                navigator.vibrate(50); // Short haptic feedback
+            });
+        });
+    }
+}
