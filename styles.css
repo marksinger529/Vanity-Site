@@ -294,6 +294,27 @@ h2 {
   color: #555;
 }
 
+/* Objective Section */
+.objective {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5em;
+  border-radius: 8px;
+  border-left: 4px solid #0056b3;
+  margin-bottom: 2em;
+}
+
+.objective h3 {
+  color: #003366;
+  margin-top: 0;
+  margin-bottom: 0.8em;
+  font-size: 1.2em;
+}
+
+.objective p {
+  margin: 0;
+  font-size: 1.1em;
+}
+
 /* Contact Section */
 #contact p {
   font-size: 1.1em;
