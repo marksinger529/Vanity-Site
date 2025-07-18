@@ -288,12 +288,11 @@ function addStatusIndicator() {
             widget.style.transform = 'scale(1)';
         }, 150);
         
-        // Open email to Mark Singer
+        // Open email with pre-filled content
         const subject = encodeURIComponent('Program Manager Opportunity - Interest in Your Background');
         const body = encodeURIComponent('Hi Mark, I came across your profile and am interested in discussing a potential Program Manager opportunity.');
         
-        // Open contact form instead of email
-        openContactForm();
+        window.open(`mailto:markharrissinger@gmail.com?subject=${subject}&body=${body}`, '_blank');
         
         // Track the interaction
         if (typeof trackContactClick === 'function') {
