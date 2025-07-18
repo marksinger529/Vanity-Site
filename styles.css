@@ -559,7 +559,12 @@ footer p {
   
   section {
     margin: 2rem 1rem;
-    padding: 2rem 1.5rem;
+    padding: 4rem 1.5rem 2rem 1.5rem; /* Add top padding to clear sticky nav */
+    scroll-margin-top: 80px; /* Offset for smooth scrolling */
+  }
+  
+  section h2 {
+    margin-top: 0; /* Remove default margin from section titles */
   }
   
   .job-header {
