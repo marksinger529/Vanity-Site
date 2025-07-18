@@ -625,6 +625,64 @@ footer p {
   }
 }
 
+/* Widget styles for mobile */
+@media (max-width: 768px) {
+  .time-weather-widget {
+    top: 60px !important;
+    right: 10px !important;
+    font-size: 11px !important;
+    padding: 12px !important;
+    min-width: 180px !important;
+  }
+  
+  .visitor-counter {
+    bottom: 15px !important;
+    right: 10px !important;
+    font-size: 10px !important;
+    padding: 8px 12px !important;
+  }
+  
+  .last-updated-widget {
+    bottom: 15px !important;
+    left: 10px !important;
+    font-size: 10px !important;
+    padding: 8px 12px !important;
+  }
+  
+  .scroll-percentage {
+    right: 5px !important;
+    top: 8px !important;
+    font-size: 9px !important;
+    padding: 1px 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-weather-widget {
+    top: 55px !important;
+    right: 5px !important;
+    font-size: 10px !important;
+    padding: 10px !important;
+    min-width: 160px !important;
+  }
+  
+  .visitor-counter,
+  .last-updated-widget {
+    font-size: 9px !important;
+    padding: 6px 10px !important;
+  }
+  
+  .visitor-counter {
+    bottom: 70px !important;
+    right: 5px !important;
+  }
+  
+  .last-updated-widget {
+    bottom: 10px !important;
+    left: 5px !important;
+  }
+}
+
 /* Print Styles */
 @media print {
   * {
