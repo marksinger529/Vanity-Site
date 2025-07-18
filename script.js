@@ -66,17 +66,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Loading animation
+    setTimeout(() => {
+        document.getElementById('loading-screen').style.display = 'none';
+        if (typeof trackGeography === 'function') trackGeography(); // Track visitor location for analytics
+    }, 1500);
+
     // Simple progress bar
     createProgressBar();
     
-    // Console log to confirm widgets were removed
-    console.log('🚀🚀🚀 FRESH LOAD - ALL WIDGETS REMOVED! 🚀🚀🚀');
-    console.log('Only remaining widgets: Status Indicator & Last Updated');
-    console.log('Navigation should be sticky with z-index 1001');
+    // Console log to confirm enhanced features
+    console.log('🚀🚀🚀 ENHANCED VERSION LOADED! 🚀🚀🚀');
+    console.log('Features: SEO, Analytics, Contact Form, Swipe Navigation, Back-to-Top');
 
-    // Add other subtle widgets
+    // Add widgets
     addStatusIndicator();
     addSmallWeatherWidget();
+    addBackToTopButton();
+
+    // Add enhanced features
+    addSwipeGestures();
+    addTouchOptimizedButtons();
 
     // Enhanced Konami code (keep this fun feature)
     addKonamiCode();
@@ -287,7 +297,13 @@ function addStatusIndicator() {
         const subject = encodeURIComponent('Program Manager Opportunity - Interest in Your Background');
         const body = encodeURIComponent('Hi Mark, I came across your profile and am interested in discussing a potential Program Manager opportunity.');
         
-        window.open(`mailto:markharrissinger@gmail.com?subject=${subject}&body=${body}`, '_blank');
+        // Open contact form instead of email
+        openContactForm();
+        
+        // Track the interaction
+        if (typeof trackContactClick === 'function') {
+            trackContactClick('opportunity_widget');
+        }
     });
     
     document.body.appendChild(widget);
