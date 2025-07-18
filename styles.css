@@ -140,23 +140,30 @@ nav a:hover {
   border-bottom-color: var(--primary-color);
 }
 
+/* Remove all special styling from resume and linkedin links */
 .resume-link, .linkedin-link {
-  background: transparent !important;
-  color: var(--primary-color) !important;
-  padding: 1rem 1.5rem !important;
-  border: 2px solid var(--primary-color) !important;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  transition: all 0.3s ease;
+  background: none !important;
+  color: var(--text-medium) !important;
+  padding: 1rem 0.5rem !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent !important;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .resume-link:hover, .linkedin-link:hover {
-  background: var(--primary-color) !important;
-  color: white !important;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  background: none !important;
+  color: var(--primary-color) !important;
+  transform: none !important;
+  box-shadow: none !important;
+  border-bottom-color: var(--primary-color) !important;
+}
+
+.resume-link::before, .linkedin-link::before {
+  display: none;
 }
 
 /* Section Styles */
@@ -600,19 +607,16 @@ footer p {
   
   nav ul {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.25rem;
+    padding: 0 1rem;
   }
   
-  nav a {
-    padding: 0.75rem;
-    text-align: center;
-  }
-  
-  .resume-link, .linkedin-link {
+  nav a, .resume-link, .linkedin-link {
     padding: 0.75rem 1rem !important;
-    margin: 0.25rem 0;
+    margin: 0.125rem 0;
     display: block;
     text-align: center;
+    border-radius: var(--radius-sm) !important;
   }
   
   .scroll-percentage {
