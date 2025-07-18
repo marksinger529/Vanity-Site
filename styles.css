@@ -2,23 +2,29 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   background: #f5f8fb;
   color: #222;
+  line-height: 1.6;
 }
+
 .main-header {
   background: linear-gradient(to right, #003366, #0056b3);
   color: white;
   padding: 2em 1em;
   text-align: center;
 }
+
 .main-header .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1em;
 }
+
 .main-header .container img {
   width: 120px;
   height: 120px;
@@ -27,11 +33,31 @@ body {
   margin-bottom: 0.5em;
   object-fit: cover;
 }
+
+.main-header h1 {
+  margin: 0.5em 0 0.2em 0;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+
+.main-header p {
+  margin: 0.2em 0;
+  font-size: 1.1em;
+}
+
+.credentials {
+  font-size: 0.95em !important;
+  opacity: 0.9;
+  font-style: italic;
+}
+
 nav {
   background-color: #fff;
   padding: 0.5em 1em;
   border-top: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 nav ul {
   display: flex;
   justify-content: center;
@@ -40,43 +66,347 @@ nav ul {
   margin: 0;
   flex-wrap: wrap;
 }
+
 nav li {
   margin: 0 1em;
 }
+
 nav a {
   text-decoration: none;
   font-weight: bold;
   color: #003366;
+  padding: 0.5em 0;
+  transition: color 0.3s ease;
 }
+
 nav a:hover {
   color: #0056b3;
 }
+
 section {
   background: white;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 2em auto;
-  padding: 2em;
+  padding: 2.5em;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
+
 h2 {
   border-bottom: 3px solid #0056b3;
   padding-bottom: 0.3em;
   color: #003366;
+  font-size: 1.8em;
+  margin-top: 0;
 }
+
 .job {
-  margin-bottom: 2em;
+  margin-bottom: 3em;
+  border-left: 3px solid #0056b3;
+  padding-left: 1.5em;
+  position: relative;
 }
-.job .company-img {
+
+.job:last-child {
+  margin-bottom: 0;
+}
+
+.company-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+}
+
+.company-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #003366;
+}
+
+.duration {
+  color: #666;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.company-img {
   width: 120px;
-  margin: 1em 0;
+  height: auto;
+  max-height: 40px;
+  object-fit: contain;
+  margin: 0.5em 0;
   border-radius: 4px;
   background: #fff;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
+
+.role-summary {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1.5em;
+  padding: 1em;
+  background: #f9f9f9;
+  border-radius: 5px;
+  border-left: 3px solid #0056b3;
+}
+
+.job h3 {
+  color: #003366;
+  margin: 0 0 0.5em 0;
+  font-size: 1.4em;
+}
+
+.job h4 {
+  color: #0056b3;
+  margin: 1.5em 0 0.8em 0;
+  font-size: 1.1em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+
+.job ul {
+  margin: 0.5em 0 1.5em 0;
+}
+
+.job li {
+  margin-bottom: 0.8em;
+  line-height: 1.5;
+}
+
+.job li strong {
+  color: #003366;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.skill-category {
+  background: #f9f9f9;
+  padding: 1.5em;
+  border-radius: 8px;
+  border-top: 3px solid #0056b3;
+}
+
+.skill-category h3 {
+  color: #003366;
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+}
+
+.skill-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-category li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-left: 1.2em;
+}
+
+.skill-category li:before {
+  content: "▸";
+  color: #0056b3;
+  position: absolute;
+  left: 0;
+}
+
+.skill-category li:last-child {
+  border-bottom: none;
+}
+
+/* Achievements Section */
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+}
+
+.achievement {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5em;
+  border-radius: 8px;
+  border-left: 4px solid #0056b3;
+  text-align: center;
+}
+
+.achievement h3 {
+  color: #003366;
+  margin-top: 0;
+  margin-bottom: 0.8em;
+  font-size: 1.1em;
+}
+
+.achievement p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.achievement strong {
+  color: #0056b3;
+  font-size: 1.2em;
+}
+
+/* Education Section */
+.education-item {
+  margin-bottom: 2em;
+  padding: 1.5em;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border-left: 3px solid #0056b3;
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+.education-item h3 {
+  color: #003366;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+.education-item p {
+  margin: 0;
+  color: #666;
+  font-style: italic;
+}
+
+.education-item ul {
+  margin-top: 1em;
+  padding-left: 1.5em;
+}
+
+.education-item li {
+  margin-bottom: 0.5em;
+  color: #555;
+}
+
+/* Contact Section */
+#contact p {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+}
+
+#contact a {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
 footer {
   text-align: center;
   padding: 2em;
   background: #003366;
   color: white;
+  margin-top: 3em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 1.5em 1em;
+  }
+  
+  .main-header h1 {
+    font-size: 2em;
+  }
+  
+  section {
+    margin: 1em;
+    padding: 1.5em;
+  }
+  
+  .company-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .company-img {
+    width: 100px;
+    max-height: 35px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+  
+  .achievement-grid {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  nav li {
+    margin: 0.3em 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header .container img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .main-header h1 {
+    font-size: 1.8em;
+  }
+  
+  .main-header p {
+    font-size: 1em;
+  }
+  
+  section {
+    padding: 1em;
+  }
+  
+  .job {
+    padding-left: 1em;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .main-header {
+    background: #003366;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  
+  section {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    margin: 1em 0;
+    page-break-inside: avoid;
+  }
+  
+  nav {
+    display: none;
+  }
 }
