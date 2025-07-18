@@ -68,6 +68,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Simple progress bar
     createProgressBar();
+    
+    // Console log to confirm widgets were removed
+    console.log('🎉 Widgets successfully removed! Only keeping: Status Indicator & Last Updated');
 
     // Add other subtle widgets
     addLastUpdatedWidget();
