@@ -119,7 +119,7 @@ function addSmallWeatherWidget() {
     widget.style.cssText = `
         position: fixed;
         bottom: 20px;
-        left: 20px;
+        right: 20px;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         padding: 12px 15px;
@@ -131,6 +131,31 @@ function addSmallWeatherWidget() {
         border: 1px solid var(--border-color);
         min-width: 120px;
     `;
+    
+    let userLocation = 'Your Location';
+    let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    
+    // Try to get user's location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            async (position) => {
+                try {
+                    // Use a free geocoding service to get city name
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+                    const data = await response.json();
+                    userLocation = data.city || data.locality || 'Your Location';
+                    updateWeather();
+                } catch (error) {
+                    console.log('Could not get location name, using default');
+                }
+            },
+            (error) => {
+                console.log('Geolocation not available, using default location');
+            }
+        );
+    }
     
     function updateWeather() {
         const now = new Date();
@@ -157,11 +182,15 @@ function addSmallWeatherWidget() {
         
         const time = now.toLocaleTimeString('en-US', { 
             hour: '2-digit', 
-            minute: '2-digit'
+            minute: '2-digit',
+            timeZone: userTimezone
         });
         
+        // Shorten long location names for display
+        const displayLocation = userLocation.length > 12 ? userLocation.substring(0, 12) + '...' : userLocation;
+        
         widget.innerHTML = `
-            <div style="font-weight: 500; margin-bottom: 4px;">🌍 NYC</div>
+            <div style="font-weight: 500; margin-bottom: 4px;">📍 ${displayLocation}</div>
             <div style="font-size: 10px; opacity: 0.8;">${weather} ${temp}°F</div>
             <div style="font-size: 10px; opacity: 0.7;">🕐 ${time}</div>
         `;
@@ -254,7 +283,7 @@ function addStatusIndicator() {
     widget.className = 'status-indicator';
     widget.style.cssText = `
         position: fixed;
-        top: 20px;
+        bottom: 20px;
         left: 20px;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
