@@ -141,17 +141,21 @@ nav a:hover {
 }
 
 .resume-link, .linkedin-link {
-  background: var(--primary-color);
-  color: white !important;
-  padding: 0.75rem 1.5rem !important;
+  background: transparent !important;
+  color: var(--primary-color) !important;
+  padding: 1rem 1.5rem !important;
+  border: 2px solid var(--primary-color) !important;
   border-radius: var(--radius-md);
-  border: none !important;
   font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .resume-link:hover, .linkedin-link:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
+  background: var(--primary-color) !important;
+  color: white !important;
+  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
@@ -455,6 +459,28 @@ h2::after {
   font-weight: 600;
 }
 
+.cert-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cert-link:hover {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+.cert-link::after {
+  content: ' 🔗';
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-link:hover::after {
+  opacity: 1;
+}
+
 .certification span {
   color: var(--text-light);
   font-size: 0.875rem;
@@ -584,6 +610,16 @@ footer p {
   
   .resume-link, .linkedin-link {
     padding: 0.75rem 1rem !important;
+    margin: 0.25rem 0;
+    display: block;
+    text-align: center;
+  }
+  
+  .scroll-percentage {
+    right: 5px;
+    top: 8px;
+    font-size: 9px;
+    padding: 1px 6px;
   }
 }
 
@@ -656,6 +692,18 @@ footer p {
   background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--accent-color));
   width: 0%;
   transition: width 0.3s ease;
+}
+
+.scroll-percentage {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  background: var(--primary-color);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 /* Ripple effect */
@@ -793,4 +841,119 @@ body:not(.loaded)::before {
 .contact-item > * {
   position: relative;
   z-index: 1;
+}
+
+/* Enhanced progress bar with percentage */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--accent-color));
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.scroll-percentage {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  background: var(--primary-color);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Additional keyframe animations */
+@keyframes floatUp {
+  0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(-30px); opacity: 0; }
+}
+
+@keyframes burst {
+  0% { transform: translate(-50%, -50%) rotate(0deg) translateY(0) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) rotate(var(--rotate, 0deg)) translateY(-40px) scale(0); opacity: 0; }
+}
+
+@keyframes advancedRipple {
+  0% { transform: scale(0); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes sparkle {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1) rotate(180deg); opacity: 0.8; }
+  100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}
+
+@keyframes ringExpand {
+  0% { width: 0; height: 0; opacity: 1; }
+  100% { width: 100px; height: 100px; opacity: 0; }
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes slideInRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* Mouse follower styles */
+.mouse-follower {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, var(--primary-color), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Enhanced job card styles */
+.job.expanded {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+}
+
+/* Skill tag enhanced interactions */
+.skill-tag {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Enhanced button shimmer effects */
+.resume-link::before, .linkedin-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.resume-link:hover::before, .linkedin-link:hover::before {
+  left: 100%;
 }
