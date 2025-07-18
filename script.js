@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Navigation should be sticky with z-index 1001');
 
     // Add other subtle widgets
-    addLastUpdatedWidget();
     addStatusIndicator();
+    addSmallWeatherWidget();
 
     // Enhanced Konami code (keep this fun feature)
     addKonamiCode();
@@ -112,36 +112,63 @@ function createProgressBar() {
 
 
 
-// Last updated widget
-function addLastUpdatedWidget() {
+// Small weather widget
+function addSmallWeatherWidget() {
     const widget = document.createElement('div');
-    widget.className = 'last-updated-widget';
+    widget.className = 'small-weather-widget';
     widget.style.cssText = `
         position: fixed;
         bottom: 20px;
         left: 20px;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
-        padding: 10px 15px;
+        padding: 12px 15px;
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         font-size: 11px;
         color: var(--text-medium);
         z-index: 1000;
         border: 1px solid var(--border-color);
+        min-width: 120px;
     `;
     
-    const lastUpdate = new Date().toLocaleDateString('en-US', { 
-        month: 'short', 
-        day: 'numeric',
-        year: 'numeric'
-    });
+    function updateWeather() {
+        const now = new Date();
+        const hour = now.getHours();
+        const month = now.getMonth();
+        
+        // Simple weather simulation based on season/time
+        let weather = '';
+        let temp = '';
+        
+        if (month >= 11 || month <= 2) { // Winter
+            weather = hour < 18 ? '❄️ Snow' : '🌙 Clear';
+            temp = Math.floor(Math.random() * 20) + 25; // 25-45°F
+        } else if (month >= 3 && month <= 5) { // Spring
+            weather = hour < 17 ? '🌸 Mild' : '🌙 Cool';
+            temp = Math.floor(Math.random() * 25) + 50; // 50-75°F
+        } else if (month >= 6 && month <= 8) { // Summer
+            weather = hour < 19 ? '☀️ Sunny' : '🌙 Warm';
+            temp = Math.floor(Math.random() * 20) + 75; // 75-95°F
+        } else { // Fall
+            weather = hour < 17 ? '🍂 Crisp' : '🌙 Cool';
+            temp = Math.floor(Math.random() * 25) + 55; // 55-80°F
+        }
+        
+        const time = now.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit'
+        });
+        
+        widget.innerHTML = `
+            <div style="font-weight: 500; margin-bottom: 4px;">🌍 NYC</div>
+            <div style="font-size: 10px; opacity: 0.8;">${weather} ${temp}°F</div>
+            <div style="font-size: 10px; opacity: 0.7;">🕐 ${time}</div>
+        `;
+    }
     
-    widget.innerHTML = `
-        <div style="font-weight: 500;">🔄 Updated ${lastUpdate}</div>
-        <div style="font-size: 10px; opacity: 0.7;">✨ Fresh content</div>
-    `;
-    
+    updateWeather();
+    setInterval(updateWeather, 60000); // Update every minute
     document.body.appendChild(widget);
 }
 
@@ -215,10 +242,7 @@ function addKeyboardShortcuts() {
                     e.preventDefault();
                     document.querySelector('#skills').scrollIntoView({ behavior: 'smooth' });
                     break;
-                case 'c':
-                    e.preventDefault();
-                    document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
-                    break;
+
             }
         }
     });
@@ -250,7 +274,7 @@ function addStatusIndicator() {
             <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></div>
             <div style="font-weight: 600; color: var(--primary-color);">Available for opportunities</div>
         </div>
-        <div style="font-size: 10px; opacity: 0.7; margin-top: 2px;">🚀 Open to Director/Principal PM roles</div>
+        <div style="font-size: 10px; opacity: 0.7; margin-top: 2px;">📧 Director/Principal/Staff/Senior PM roles</div>
     `;
     
     widget.addEventListener('click', () => {
@@ -258,6 +282,23 @@ function addStatusIndicator() {
         setTimeout(() => {
             widget.style.transform = 'scale(1)';
         }, 150);
+        
+        // Open email to Mark Singer
+        const subject = encodeURIComponent('Program Manager Opportunity - Interest in Your Background');
+        const body = encodeURIComponent(`Hi Mark,
+
+I came across your profile and am interested in discussing a potential Program Manager opportunity.
+
+I'd like to explore:
+☐ Director level Program Manager role
+☐ Principal Program Manager role  
+☐ Staff Program Manager role
+☐ Senior Program Manager role
+
+Best regards,
+[Your Name]`);
+        
+        window.open(`mailto:markharrissinger@gmail.com?subject=${subject}&body=${body}`, '_blank');
     });
     
     document.body.appendChild(widget);

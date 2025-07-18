@@ -634,7 +634,7 @@ footer p {
     padding: 10px 12px !important;
   }
   
-  .last-updated-widget {
+  .small-weather-widget {
     bottom: 15px !important;
     left: 10px !important;
     font-size: 10px !important;
@@ -657,7 +657,7 @@ footer p {
     padding: 8px 10px !important;
   }
   
-  .last-updated-widget {
+  .small-weather-widget {
     bottom: 10px !important;
     left: 5px !important;
     font-size: 9px !important;
