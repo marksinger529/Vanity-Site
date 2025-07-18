@@ -45,12 +45,6 @@ body {
   font-size: 1.1em;
 }
 
-.credentials {
-  font-size: 0.95em !important;
-  opacity: 0.9;
-  font-style: italic;
-}
-
 nav {
   background-color: #fff;
   padding: 0.5em 1em;
@@ -100,6 +94,27 @@ h2 {
   margin-top: 0;
 }
 
+/* Objective Section */
+.objective {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5em;
+  border-radius: 8px;
+  border-left: 4px solid #0056b3;
+  margin-bottom: 2em;
+}
+
+.objective h3 {
+  color: #003366;
+  margin-top: 0;
+  margin-bottom: 0.8em;
+  font-size: 1.2em;
+}
+
+.objective p {
+  margin: 0;
+  font-size: 1.1em;
+}
+
 .job {
   margin-bottom: 3em;
   border-left: 3px solid #0056b3;
@@ -123,6 +138,7 @@ h2 {
   font-weight: bold;
   font-size: 1.1em;
   color: #003366;
+  flex-grow: 1;
 }
 
 .duration {
@@ -131,15 +147,16 @@ h2 {
   font-size: 0.95em;
 }
 
-.company-img {
-  width: 120px;
-  height: auto;
-  max-height: 40px;
-  object-fit: contain;
-  margin: 0.5em 0;
+.company-logo {
+  background: #0056b3;
+  color: white;
+  padding: 0.5em 1em;
   border-radius: 4px;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: center;
+  min-width: 80px;
+  margin: 0.5em 0;
 }
 
 .role-summary {
@@ -173,146 +190,6 @@ h2 {
 .job li {
   margin-bottom: 0.8em;
   line-height: 1.5;
-}
-
-.job li strong {
-  color: #003366;
-}
-
-/* Skills Section */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2em;
-  margin-top: 2em;
-}
-
-.skill-category {
-  background: #f9f9f9;
-  padding: 1.5em;
-  border-radius: 8px;
-  border-top: 3px solid #0056b3;
-}
-
-.skill-category h3 {
-  color: #003366;
-  margin-top: 0;
-  margin-bottom: 1em;
-  font-size: 1.2em;
-}
-
-.skill-category ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.skill-category li {
-  padding: 0.4em 0;
-  border-bottom: 1px solid #eee;
-  position: relative;
-  padding-left: 1.2em;
-}
-
-.skill-category li:before {
-  content: "▸";
-  color: #0056b3;
-  position: absolute;
-  left: 0;
-}
-
-.skill-category li:last-child {
-  border-bottom: none;
-}
-
-/* Achievements Section */
-.achievement-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5em;
-  margin-top: 2em;
-}
-
-.achievement {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 1.5em;
-  border-radius: 8px;
-  border-left: 4px solid #0056b3;
-  text-align: center;
-}
-
-.achievement h3 {
-  color: #003366;
-  margin-top: 0;
-  margin-bottom: 0.8em;
-  font-size: 1.1em;
-}
-
-.achievement p {
-  margin: 0;
-  line-height: 1.5;
-}
-
-.achievement strong {
-  color: #0056b3;
-  font-size: 1.2em;
-}
-
-/* Education Section */
-.education-item {
-  margin-bottom: 2em;
-  padding: 1.5em;
-  background: #f9f9f9;
-  border-radius: 8px;
-  border-left: 3px solid #0056b3;
-}
-
-.education-item:last-child {
-  margin-bottom: 0;
-}
-
-.education-item h3 {
-  color: #003366;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  font-size: 1.2em;
-}
-
-.education-item p {
-  margin: 0;
-  color: #666;
-  font-style: italic;
-}
-
-.education-item ul {
-  margin-top: 1em;
-  padding-left: 1.5em;
-}
-
-.education-item li {
-  margin-bottom: 0.5em;
-  color: #555;
-}
-
-/* Objective Section */
-.objective {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 1.5em;
-  border-radius: 8px;
-  border-left: 4px solid #0056b3;
-  margin-bottom: 2em;
-}
-
-.objective h3 {
-  color: #003366;
-  margin-top: 0;
-  margin-bottom: 0.8em;
-  font-size: 1.2em;
-}
-
-.objective p {
-  margin: 0;
-  font-size: 1.1em;
 }
 
 /* Contact Section */
@@ -359,19 +236,9 @@ footer {
     align-items: flex-start;
   }
   
-  .company-img {
-    width: 100px;
-    max-height: 35px;
-  }
-  
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5em;
-  }
-  
-  .achievement-grid {
-    grid-template-columns: 1fr;
-    gap: 1em;
+  .company-logo {
+    width: 100%;
+    min-width: auto;
   }
   
   nav ul {
