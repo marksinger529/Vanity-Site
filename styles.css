@@ -107,7 +107,7 @@ nav {
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1001;
   box-shadow: var(--shadow-sm);
 }
 
@@ -627,49 +627,11 @@ footer p {
 
 /* Widget styles for mobile */
 @media (max-width: 768px) {
-  .time-weather-widget {
-    top: 60px !important;
-    right: 10px !important;
-    font-size: 11px !important;
-    padding: 12px !important;
-    min-width: 180px !important;
-  }
-  
-  .weather-timezone {
-    top: 160px !important;
-    right: 10px !important;
-    font-size: 10px !important;
-    padding: 12px !important;
-    min-width: 180px !important;
-  }
-  
-  .quick-stats {
-    top: 240px !important;
-    right: 10px !important;
-    font-size: 10px !important;
-    padding: 12px !important;
-    min-width: 180px !important;
-  }
-  
   .status-indicator {
     top: 15px !important;
     left: 10px !important;
     font-size: 11px !important;
     padding: 10px 12px !important;
-  }
-  
-  .save-bookmark {
-    top: 15px !important;
-    right: 200px !important;
-    font-size: 10px !important;
-    padding: 8px 10px !important;
-  }
-  
-  .visitor-counter {
-    bottom: 15px !important;
-    right: 10px !important;
-    font-size: 10px !important;
-    padding: 8px 12px !important;
   }
   
   .last-updated-widget {
@@ -688,26 +650,6 @@ footer p {
 }
 
 @media (max-width: 480px) {
-  .time-weather-widget {
-    top: 55px !important;
-    right: 5px !important;
-    font-size: 10px !important;
-    padding: 10px !important;
-    min-width: 160px !important;
-  }
-  
-  .weather-timezone {
-    display: none !important; /* Hide on very small screens */
-  }
-  
-  .quick-stats {
-    top: 140px !important;
-    right: 5px !important;
-    font-size: 9px !important;
-    padding: 10px !important;
-    min-width: 160px !important;
-  }
-  
   .status-indicator {
     top: 10px !important;
     left: 5px !important;
@@ -715,27 +657,11 @@ footer p {
     padding: 8px 10px !important;
   }
   
-  .save-bookmark {
-    top: 10px !important;
-    right: 170px !important;
-    font-size: 9px !important;
-    padding: 6px 8px !important;
-  }
-  
-  .visitor-counter,
-  .last-updated-widget {
-    font-size: 9px !important;
-    padding: 6px 10px !important;
-  }
-  
-  .visitor-counter {
-    bottom: 70px !important;
-    right: 5px !important;
-  }
-  
   .last-updated-widget {
     bottom: 10px !important;
     left: 5px !important;
+    font-size: 9px !important;
+    padding: 6px 10px !important;
   }
 }
 
