@@ -29,28 +29,34 @@ function submitContactForm(event) {
     // Simulate form submission (in real implementation, send to your backend)
     console.log('Contact form submitted:', data);
     
-    // Show success message
-    document.getElementById('contact-form').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
+    // Hide form and show success message
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
     
-    // Send email using mailto as fallback
-    const subject = encodeURIComponent(`PM Opportunity: ${data.position} from ${data.name}`);
+    form.style.display = 'none';
+    success.style.display = 'block';
+    
+    // Send email immediately - simplified version
+    const subject = encodeURIComponent(`Contact from ${data.name} - Program Manager Opportunity`);
     const body = encodeURIComponent(`Name: ${data.name}
 Email: ${data.email}
-Company: ${data.company || 'Not specified'}
-Position Level: ${data.position}
 
 Message:
-${data.message}`);
+${data.message}
+
+---
+Sent from Mark Singer's portfolio website`);
     
-    setTimeout(() => {
-        window.open(`mailto:markharrissinger@gmail.com?subject=${subject}&body=${body}`, '_blank');
-    }, 1000);
+    // Open email client immediately
+    window.open(`mailto:markharrissinger@gmail.com?subject=${subject}&body=${body}`, '_self');
     
-    // Close form after 3 seconds
+    // Close form after 4 seconds
     setTimeout(() => {
         closeContactForm();
-    }, 3000);
+        // Reset form display for next use
+        form.style.display = 'block';
+        success.style.display = 'none';
+    }, 4000);
 }
 
 // Back to Top Button
