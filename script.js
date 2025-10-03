@@ -279,7 +279,7 @@ function addStatusIndicator() {
             <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></div>
             <div style="font-weight: 600; color: var(--primary-color);">Available for opportunities</div>
         </div>
-        <div style="font-size: 10px; opacity: 0.7; margin-top: 2px;">📧 Director/Principal/Staff/Senior PM roles</div>
+        <div style="font-size: 10px; opacity: 0.7; margin-top: 2px;">📧 Director/Principal/Staff/Manager PM roles</div>
     `;
     
     widget.addEventListener('click', () => {
